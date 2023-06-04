@@ -29,7 +29,10 @@ if LOGS:
     print_debug = logging.debug
 else:
     print = print
-    print_debug = print
+    if LOGGING_LEVEL >= logging.DEBUG:
+        print_debug = print
+    else:
+        print_debug = lambda *args, **kwargs: None
 
 
 def getIP() -> str:
